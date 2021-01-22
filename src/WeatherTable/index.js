@@ -1,18 +1,57 @@
+/* eslint-disable no-alert */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import WeatherIcon from '../WeatherIcon/index';
 
-export default function WeatherTable() {
+export default function WeatherTable({ location }) {
+  const [weather, setWeather] = useState({
+    temperature: '---',
+    description: '',
+    icon: '',
+    feelsLike: '',
+  });
+  useEffect(async () => {
+    try {
+      const res = await fetch(
+        `//api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=df8f43f7523fec63b2b7896097360962`
+      );
+      const data = await res.json();
+      const temperature = Math.round(data.main.temp);
+      const { description } = data.weather[0];
+      const { icon } = data.weather[0];
+      const feelsLike = data.main.feels_like;
+      setWeather((prev) => ({
+        ...prev,
+        temperature,
+        description,
+        icon,
+        feelsLike,
+      }));
+    } catch (err) {
+      alert(err);
+      setWeather((prev) => ({ ...prev, temperature: 'N/A' }));
+    }
+  }, []);
+
   return (
     <table>
       <thead>
         <tr>
-          <th colSpan="2">Weather</th>
+          <th colSpan="2">{location.toUpperCase()}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Temp:</td>
+          <td>{weather.temperature}</td>
+          <td>
+            <WeatherIcon type={weather.icon} />
+            {weather.description}
+          </td>
+        </tr>
+        <tr>
           <td>Feels like:</td>
+          <td>{weather.feelsLike}</td>
         </tr>
       </tbody>
     </table>
