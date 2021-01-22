@@ -17,7 +17,7 @@ export default function SearchBar(props) {
   };
   return (
     <>
-      <input type="text" value={props.value} onChange={handleChange} />
+      <input type="text" value={props.inputText} onChange={handleChange} />
       <button onClick={handleSearchClick}>search</button>
       <button onClick={handleShowFiltersClick}>Show Filters</button>
     </>

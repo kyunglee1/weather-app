@@ -12,6 +12,12 @@ export default function App() {
   const [city, setCity] = useState('');
   const [hasClickedSearch, setHasClickedSearch] = useState(false);
   const [hasClickedShowFilters, setHasClickedShowFilters] = useState(false);
+  const [filters, setFilters] = useState({
+    minmax: false,
+    wind: false,
+    humidity: false,
+    visibility: false,
+  });
   const handleInputChange = (e) => {
     const input = e.target.value;
     setCity(input);
@@ -23,15 +29,28 @@ export default function App() {
   const handleShowFiltersClick = () => {
     setHasClickedShowFilters((prev) => !prev);
   };
+  const handleFilterChange = (e) => {
+    const { name } = e.target;
+    const value = e.target.checked;
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   return (
     <div>
       <SearchBar
-        value={city}
+        inputText={city}
         onInputChange={handleInputChange}
         onSearchClick={handleSearchClick}
         onShowFiltersClick={handleShowFiltersClick}
       />
-      {hasClickedShowFilters && <SearchFilterTable />}
+      {hasClickedShowFilters && (
+        <SearchFilterTable
+          filters={filters}
+          onFilterChange={handleFilterChange}
+        />
+      )}
       {hasClickedSearch && <WeatherTable location={city} />}
     </div>
   );
