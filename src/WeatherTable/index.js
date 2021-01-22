@@ -9,6 +9,7 @@ export default function WeatherTable({ location }) {
     temperature: '---',
     description: '',
     icon: '',
+    feelsLike: '',
   });
   useEffect(async () => {
     try {
@@ -19,7 +20,14 @@ export default function WeatherTable({ location }) {
       const temperature = Math.round(data.main.temp);
       const { description } = data.weather[0];
       const { icon } = data.weather[0];
-      setWeather((prev) => ({ ...prev, temperature, description, icon }));
+      const feelsLike = data.main.feels_like;
+      setWeather((prev) => ({
+        ...prev,
+        temperature,
+        description,
+        icon,
+        feelsLike,
+      }));
     } catch (err) {
       alert(err);
       setWeather((prev) => ({ ...prev, temperature: 'N/A' }));
@@ -43,7 +51,7 @@ export default function WeatherTable({ location }) {
         </tr>
         <tr>
           <td>Feels like:</td>
-          <td>{weather.description}</td>
+          <td>{weather.feelsLike}</td>
         </tr>
       </tbody>
     </table>
