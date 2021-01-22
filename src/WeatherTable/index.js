@@ -4,18 +4,24 @@
 import React, { useState, useEffect } from 'react';
 
 export default function WeatherTable({ location }) {
-  const [temperature, setTemperature] = useState('---');
+  const [weather, setWeather] = useState({
+    temperature: '---',
+    description: '',
+    icon: '',
+  });
   useEffect(async () => {
     try {
       const res = await fetch(
         `//api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=df8f43f7523fec63b2b7896097360962`
       );
       const data = await res.json();
-      const temp = Math.round(data.main.temp);
-      setTemperature(temp);
+      const temperature = Math.round(data.main.temp);
+      const { description } = data.weather[0];
+      const { icon } = data.weather[0];
+      setWeather((prev) => ({ ...prev, temperature, description, icon }));
     } catch (err) {
       alert(err);
-      setTemperature('N/A');
+      setWeather((prev) => ({ ...prev, temperature: 'N/A' }));
     }
   }, []);
 
@@ -28,12 +34,12 @@ export default function WeatherTable({ location }) {
       </thead>
       <tbody>
         <tr>
-          <td>{temperature}</td>
-          <td>icon * description</td>
+          <td>{weather.temperature}</td>
+          <td>{weather.icon}</td>
         </tr>
         <tr>
           <td>Feels like:</td>
-          <td>...</td>
+          <td>{weather.description}</td>
         </tr>
       </tbody>
     </table>
