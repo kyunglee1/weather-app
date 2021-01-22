@@ -11,6 +11,7 @@ import './index.css';
 export default function App() {
   const [city, setCity] = useState('');
   const [hasClickedSearch, setHasClickedSearch] = useState(false);
+  const [hasClickedShowFilters, setHasClickedShowFilters] = useState(false);
   const handleInputChange = (e) => {
     const input = e.target.value;
     setCity(input);
@@ -19,15 +20,18 @@ export default function App() {
   const handleSearchClick = () => {
     setHasClickedSearch(true);
   };
-
+  const handleShowFiltersClick = () => {
+    setHasClickedShowFilters((prev) => !prev);
+  };
   return (
     <div>
       <SearchBar
         value={city}
         onInputChange={handleInputChange}
         onSearchClick={handleSearchClick}
+        onShowFiltersClick={handleShowFiltersClick}
       />
-      <SearchFilterTable />
+      {hasClickedShowFilters && <SearchFilterTable />}
       {hasClickedSearch && <WeatherTable location={city} />}
     </div>
   );
