@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react';
+import WeatherIcon from '../WeatherIcon/index';
 
 export default function WeatherTable({ location }) {
   const [weather, setWeather] = useState({
@@ -35,7 +36,10 @@ export default function WeatherTable({ location }) {
       <tbody>
         <tr>
           <td>{weather.temperature}</td>
-          <td>{weather.icon}</td>
+          <td>
+            <WeatherIcon type={weather.icon} />
+            {weather.description}
+          </td>
         </tr>
         <tr>
           <td>Feels like:</td>
