@@ -4,12 +4,19 @@
 import React, { useState, useEffect } from 'react';
 import WeatherIcon from '../WeatherIcon/index';
 
-export default function WeatherTable({ location }) {
+export default function WeatherTable({ location, filters }) {
   const [weather, setWeather] = useState({
     temperature: '---',
     description: '',
     icon: '',
     feelsLike: '',
+    advanced: {
+      tempMax: '',
+      tempMin: '',
+      humidity: '',
+      wind: '',
+      visibility: '',
+    },
   });
   useEffect(async () => {
     try {
@@ -21,13 +28,25 @@ export default function WeatherTable({ location }) {
       const { description } = data.weather[0];
       const { icon } = data.weather[0];
       const feelsLike = data.main.feels_like;
-      setWeather((prev) => ({
-        ...prev,
+      const tempMax = Math.round(data.main.temp_max);
+      const tempMin = Math.round(data.main.temp_min);
+      const { humidity } = data.main;
+      const { visibility } = data;
+      const wind = Math.round(data.wind.speed);
+
+      setWeather({
         temperature,
         description,
         icon,
         feelsLike,
-      }));
+        advanced: {
+          tempMax,
+          tempMin,
+          humidity,
+          visibility,
+          wind,
+        },
+      });
     } catch (err) {
       alert(err);
       setWeather((prev) => ({ ...prev, temperature: 'N/A' }));
@@ -53,6 +72,36 @@ export default function WeatherTable({ location }) {
           <td>Feels like:</td>
           <td>{weather.feelsLike}</td>
         </tr>
+        {filters.minmax && (
+          <tr>
+            <td>HI</td>
+            <td>{weather.advanced.tempMax}</td>
+          </tr>
+        )}
+        {filters.minmax && (
+          <tr>
+            <td>LO</td>
+            <td>{weather.advanced.tempMin}</td>
+          </tr>
+        )}
+        {filters.wind && (
+          <tr>
+            <td>Wind Speed</td>
+            <td>{weather.advanced.wind}</td>
+          </tr>
+        )}
+        {filters.humidity && (
+          <tr>
+            <td>Humidity</td>
+            <td>{weather.advanced.humidity}</td>
+          </tr>
+        )}
+        {filters.visibility && (
+          <tr>
+            <td>Visibility</td>
+            <td>{weather.advanced.visibility}</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

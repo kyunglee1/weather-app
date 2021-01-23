@@ -51,7 +51,7 @@ export default function App() {
           onFilterChange={handleFilterChange}
         />
       )}
-      {hasClickedSearch && <WeatherTable location={city} />}
+      {hasClickedSearch && <WeatherTable location={city} filters={filters} />}
     </div>
   );
 }
