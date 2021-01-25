@@ -4,6 +4,7 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
+import './index.css';
 
 export default function SearchBar(props) {
   const handleChange = (e) => {
@@ -16,10 +17,10 @@ export default function SearchBar(props) {
     props.onShowFiltersClick();
   };
   return (
-    <>
+    <div className="search-input">
       <input type="text" value={props.inputText} onChange={handleChange} />
       <button onClick={handleSearchClick}>search</button>
       <button onClick={handleShowFiltersClick}>Show Filters</button>
-    </>
+    </div>
   );
 }

@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import './index.css';
 
 export default function SearchFilterTable({ filters, onFilterChange }) {
   return (
-    <table id="search-filter-table">
+    <table className="search-filter-table">
       <tbody>
         <tr>
           <td>

@@ -38,7 +38,7 @@ export default function App() {
     }));
   };
   return (
-    <div>
+    <div id="container">
       <SearchBar
         inputText={city}
         onInputChange={handleInputChange}
