@@ -8,12 +8,12 @@ import WeatherIcon from '../WeatherIcon/index';
 export default function WeatherTable({ location, filters }) {
   const [weather, setWeather] = useState({
     temperature: '---',
+    tempMax: '',
+    tempMin: '',
     description: '',
     icon: '',
-    feelsLike: '',
     advanced: {
-      tempMax: '',
-      tempMin: '',
+      feelsLike: '',
       humidity: '',
       wind: '',
       visibility: '',
@@ -28,7 +28,7 @@ export default function WeatherTable({ location, filters }) {
       const temperature = Math.round(data.main.temp);
       const { description } = data.weather[0];
       const { icon } = data.weather[0];
-      const feelsLike = data.main.feels_like;
+      const feelsLike = Math.round(data.main.feels_like);
       const tempMax = Math.round(data.main.temp_max);
       const tempMin = Math.round(data.main.temp_min);
       const { humidity } = data.main;
@@ -37,12 +37,12 @@ export default function WeatherTable({ location, filters }) {
 
       setWeather({
         temperature,
+        tempMax,
+        tempMin,
         description,
         icon,
-        feelsLike,
         advanced: {
-          tempMax,
-          tempMin,
+          feelsLike,
           humidity,
           wind,
           visibility,
@@ -69,38 +69,32 @@ export default function WeatherTable({ location, filters }) {
             {weather.description}
           </td>
         </tr>
-        <WeatherFieldRow
-          fieldName="Feels Like:"
-          fieldData={weather.feelsLike}
-        />
-        {filters.minmax && (
+        <tr>
+          <td>{`HI ${weather.tempMax}°`}</td>
+          <td>{`LO ${weather.tempMin}°`}</td>
+        </tr>
+        {filters.feelsLike && (
           <WeatherFieldRow
-            fieldName="HI"
-            fieldData={weather.advanced.tempMax}
-          />
-        )}
-        {filters.minmax && (
-          <WeatherFieldRow
-            fieldName="LO"
-            fieldData={weather.advanced.tempMin}
+            fieldName="Feels Like:"
+            fieldData={`${weather.advanced.feelsLike}°`}
           />
         )}
         {filters.wind && (
           <WeatherFieldRow
             fieldName="Wind Speed"
-            fieldData={weather.advanced.wind}
+            fieldData={`${weather.advanced.wind} mph`}
           />
         )}
         {filters.humidity && (
           <WeatherFieldRow
             fieldName="Humidity"
-            fieldData={weather.advanced.humidity}
+            fieldData={`${weather.advanced.humidity}%`}
           />
         )}
         {filters.visibility && (
           <WeatherFieldRow
             fieldName="Visibility"
-            fieldData={weather.advanced.visibility}
+            fieldData={`${weather.advanced.visibility} m`}
           />
         )}
       </tbody>

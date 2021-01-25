@@ -13,7 +13,7 @@ export default function App() {
   const [hasClickedSearch, setHasClickedSearch] = useState(false);
   const [hasClickedShowFilters, setHasClickedShowFilters] = useState(false);
   const [filters, setFilters] = useState({
-    minmax: false,
+    feelsLike: false,
     wind: false,
     humidity: false,
     visibility: false,

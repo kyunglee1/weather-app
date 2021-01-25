@@ -38,12 +38,12 @@ export default function SearchFilterTable({ filters, onFilterChange }) {
           </td>
           <td>
             <input
-              name="minmax"
+              name="feelsLike"
               type="checkbox"
-              checked={filters.minmax}
+              checked={filters.feelsLike}
               onChange={onFilterChange}
             />
-            Temperature High/Low
+            Feels-Like
           </td>
         </tr>
       </tbody>
