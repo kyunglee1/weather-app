@@ -31,8 +31,8 @@ export default function WeatherTable({ location, filters }) {
       const tempMax = Math.round(data.main.temp_max);
       const tempMin = Math.round(data.main.temp_min);
       const { humidity } = data.main;
-      const { visibility } = data;
       const wind = Math.round(data.wind.speed);
+      const { visibility } = data;
 
       setWeather({
         temperature,
@@ -43,8 +43,8 @@ export default function WeatherTable({ location, filters }) {
           tempMax,
           tempMin,
           humidity,
-          visibility,
           wind,
+          visibility,
         },
       });
     } catch (err) {

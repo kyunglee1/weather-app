@@ -4,5 +4,5 @@ import React from 'react';
 
 export default function WeatherIcon({ type }) {
   const url = `https://openweathermap.org/img/wn/${type}@2x.png`;
-  return <img src={url} alt="Weather Icon" />;
+  return <img src={url} alt=" Weather Icon" />;
 }
