@@ -1,20 +1,25 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
 
-export default function SearchBar({ value, onInputChange, onSearchClick }) {
+export default function SearchBar(props) {
   const handleChange = (e) => {
-    onInputChange(e);
+    props.onInputChange(e);
   };
-  const handleClick = () => {
-    onSearchClick();
+  const handleSearchClick = () => {
+    props.onSearchClick();
+  };
+  const handleShowFiltersClick = () => {
+    props.onShowFiltersClick();
   };
   return (
     <>
-      <input type="text" value={value} onChange={handleChange} />
-      <button onClick={handleClick}>search</button>
+      <input type="text" value={props.inputText} onChange={handleChange} />
+      <button onClick={handleSearchClick}>search</button>
+      <button onClick={handleShowFiltersClick}>Show Filters</button>
     </>
   );
 }
