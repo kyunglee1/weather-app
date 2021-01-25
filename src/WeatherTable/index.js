@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react';
+import WeatherFieldRow from '../WeatherFieldRow/index';
 import WeatherIcon from '../WeatherIcon/index';
 
 export default function WeatherTable({ location, filters }) {
@@ -68,39 +69,39 @@ export default function WeatherTable({ location, filters }) {
             {weather.description}
           </td>
         </tr>
-        <tr>
-          <td>Feels like:</td>
-          <td>{weather.feelsLike}</td>
-        </tr>
+        <WeatherFieldRow
+          fieldName="Feels Like:"
+          fieldData={weather.feelsLike}
+        />
         {filters.minmax && (
-          <tr>
-            <td>HI</td>
-            <td>{weather.advanced.tempMax}</td>
-          </tr>
+          <WeatherFieldRow
+            fieldName="HI"
+            fieldData={weather.advanced.tempMax}
+          />
         )}
         {filters.minmax && (
-          <tr>
-            <td>LO</td>
-            <td>{weather.advanced.tempMin}</td>
-          </tr>
+          <WeatherFieldRow
+            fieldName="LO"
+            fieldData={weather.advanced.tempMin}
+          />
         )}
         {filters.wind && (
-          <tr>
-            <td>Wind Speed</td>
-            <td>{weather.advanced.wind}</td>
-          </tr>
+          <WeatherFieldRow
+            fieldName="Wind Speed"
+            fieldData={weather.advanced.wind}
+          />
         )}
         {filters.humidity && (
-          <tr>
-            <td>Humidity</td>
-            <td>{weather.advanced.humidity}</td>
-          </tr>
+          <WeatherFieldRow
+            fieldName="Humidity"
+            fieldData={weather.advanced.humidity}
+          />
         )}
         {filters.visibility && (
-          <tr>
-            <td>Visibility</td>
-            <td>{weather.advanced.visibility}</td>
-          </tr>
+          <WeatherFieldRow
+            fieldName="Visibility"
+            fieldData={weather.advanced.visibility}
+          />
         )}
       </tbody>
     </table>
