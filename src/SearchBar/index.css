@@ -1,7 +1,28 @@
 .search-input {
   grid-area: search;
+  display: flex;
+  justify-content: center;
 }
 
 .search-input input {
-  width: 79%;
+  width: 50%;
+  height: 10%;
+  padding: 10px;
+  border-radius: 40px;
+  outline: none;
+}
+
+.search-input button {
+  height: 50%;
+  width: 5%;
+  margin-left: 3px;
+  border: none;
+  outline: none;
+  background: url('https://cdn3.iconfinder.com/data/icons/instagram-18/512/194_Instagram_Search_Sets-512.png')
+    no-repeat;
+  background-size: 100%;
+}
+
+#search-icon {
+  height: 10;
 }

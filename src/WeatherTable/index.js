@@ -63,7 +63,7 @@ export default function WeatherTable({ location, filters }) {
         </tr>
       </thead>
       <tbody>
-        <tr id="temperature-row">
+        <tr>
           <td id="temperature-td">{`${weather.temperature}°`}</td>
           <td>
             <div id="icon-td">
@@ -72,13 +72,13 @@ export default function WeatherTable({ location, filters }) {
             </div>
           </td>
         </tr>
-        <tr id="minmax-row">
+        <tr>
           <td>{`HI ${weather.tempMax}°`}</td>
           <td>{`LO ${weather.tempMin}°`}</td>
         </tr>
         {filters.feelsLike && (
           <WeatherFieldRow
-            fieldName="Feels Like:"
+            fieldName="Feels Like"
             fieldData={`${weather.advanced.feelsLike}°`}
           />
         )}

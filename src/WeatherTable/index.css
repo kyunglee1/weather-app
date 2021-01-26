@@ -1,9 +1,12 @@
 .weather-table {
   grid-area: table;
-  border: 1px solid red;
+  border: 7px double white;
+  border-radius: 30px;
+  background-color: rgb(63, 154, 240);
   width: 100%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 40px;
+  padding-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .weather-table td {
@@ -11,10 +14,7 @@
   text-align: center;
   white-space: nowrap;
   padding: 10px;
-}
-
-.weather-table td:nth-child(1) {
-  text-align: right;
+  color: white;
 }
 
 th {
@@ -31,7 +31,8 @@ th {
   font-size: 300%;
 }
 
-#temperature-row td,
-#minmax-row td {
-  text-align: center;
+#icon-td,
+#temperature-td {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

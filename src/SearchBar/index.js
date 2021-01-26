@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
@@ -13,14 +14,20 @@ export default function SearchBar(props) {
   const handleSearchClick = () => {
     props.onSearchClick();
   };
-  const handleShowFiltersClick = () => {
-    props.onShowFiltersClick();
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      props.onSearchClick();
+    }
   };
   return (
     <div className="search-input">
-      <input type="text" value={props.inputText} onChange={handleChange} />
-      <button onClick={handleSearchClick}>search</button>
-      <button onClick={handleShowFiltersClick}>Show Filters</button>
+      <input
+        type="text"
+        value={props.inputText}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+      />
+      <button onClick={handleSearchClick} />
     </div>
   );
 }
