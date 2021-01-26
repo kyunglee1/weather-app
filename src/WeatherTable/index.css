@@ -1,0 +1,38 @@
+.weather-table {
+  grid-area: table;
+  border: 7px double white;
+  border-radius: 30px;
+  background-color: rgb(63, 154, 240);
+  width: 100%;
+  padding: 40px;
+  padding-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.weather-table td {
+  font-size: 120%;
+  text-align: center;
+  white-space: nowrap;
+  padding: 10px;
+  color: white;
+}
+
+th {
+  font-size: 150%;
+  padding: 15px;
+}
+
+#icon-td {
+  display: flex;
+  flex-direction: column;
+}
+
+#temperature-td {
+  font-size: 300%;
+}
+
+#icon-td,
+#temperature-td {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

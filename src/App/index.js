@@ -3,6 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react';
+import ShowFiltersButton from '../ShowFiltersButton/index';
 import SearchBar from '../SearchBar/index';
 import SearchFilterTable from '../SearchFilterTable/index';
 import WeatherTable from '../WeatherTable/index';
@@ -38,13 +39,13 @@ export default function App() {
     }));
   };
   return (
-    <div>
+    <div id="container">
       <SearchBar
         inputText={city}
         onInputChange={handleInputChange}
         onSearchClick={handleSearchClick}
-        onShowFiltersClick={handleShowFiltersClick}
       />
+      <ShowFiltersButton onShowFiltersClick={handleShowFiltersClick} />
       {hasClickedShowFilters && (
         <SearchFilterTable
           filters={filters}

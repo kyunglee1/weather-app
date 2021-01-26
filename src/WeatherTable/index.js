@@ -4,12 +4,13 @@
 import React, { useState, useEffect } from 'react';
 import WeatherFieldRow from '../WeatherFieldRow/index';
 import WeatherIcon from '../WeatherIcon/index';
+import './index.css';
 
 export default function WeatherTable({ location, filters }) {
   const [weather, setWeather] = useState({
     temperature: '---',
-    tempMax: '',
-    tempMin: '',
+    tempMax: '--',
+    tempMin: '--',
     description: '',
     icon: '',
     advanced: {
@@ -55,7 +56,7 @@ export default function WeatherTable({ location, filters }) {
   }, []);
 
   return (
-    <table>
+    <table className="weather-table">
       <thead>
         <tr>
           <th colSpan="2">{location.toUpperCase()}</th>
@@ -63,10 +64,12 @@ export default function WeatherTable({ location, filters }) {
       </thead>
       <tbody>
         <tr>
-          <td>{weather.temperature}</td>
+          <td id="temperature-td">{`${weather.temperature}°`}</td>
           <td>
-            <WeatherIcon type={weather.icon} />
-            {weather.description}
+            <div id="icon-td">
+              <WeatherIcon type={weather.icon} />
+              {weather.description}
+            </div>
           </td>
         </tr>
         <tr>
@@ -75,7 +78,7 @@ export default function WeatherTable({ location, filters }) {
         </tr>
         {filters.feelsLike && (
           <WeatherFieldRow
-            fieldName="Feels Like:"
+            fieldName="Feels Like"
             fieldData={`${weather.advanced.feelsLike}°`}
           />
         )}
