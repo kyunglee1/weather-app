@@ -1,3 +1,7 @@
 .search-input {
   grid-area: search;
 }
+
+.search-input input {
+  width: 79%;
+}

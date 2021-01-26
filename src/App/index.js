@@ -39,18 +39,18 @@ export default function App() {
   };
   return (
     <div id="container">
-      <SearchBar
-        inputText={city}
-        onInputChange={handleInputChange}
-        onSearchClick={handleSearchClick}
-        onShowFiltersClick={handleShowFiltersClick}
-      />
       {hasClickedShowFilters && (
         <SearchFilterTable
           filters={filters}
           onFilterChange={handleFilterChange}
         />
       )}
+      <SearchBar
+        inputText={city}
+        onInputChange={handleInputChange}
+        onSearchClick={handleSearchClick}
+        onShowFiltersClick={handleShowFiltersClick}
+      />
       {hasClickedSearch && <WeatherTable location={city} filters={filters} />}
     </div>
   );
