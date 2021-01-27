@@ -1,6 +1,3 @@
-/* eslint-disable no-alert */
-// °
-/* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react';
 import ShowFiltersButton from '../ShowFiltersButton/index';
