@@ -5,9 +5,8 @@
 import React from 'react';
 import './index.css';
 
-export default function ShowFiltersButton({ onShowFiltersClick }) {
-  const handleClick = () => {
-    onShowFiltersClick();
-  };
-  return <button className="show-filters-button" onClick={handleClick} />;
-}
+const ShowFiltersButton = ({ onShowFiltersClick }) => (
+  <button className="show-filters-button" onClick={onShowFiltersClick} />
+);
+
+export default ShowFiltersButton;

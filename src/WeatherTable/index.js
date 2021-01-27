@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import useWeather from '../hooks/weather';
+import useWeather from '../hooks/useWeather';
 import WeatherFieldRow from '../WeatherFieldRow/index';
 import WeatherIcon from '../WeatherIcon/index';
 import './index.css';
 
-export default function WeatherTable({ location, filters }) {
+const WeatherTable = ({ location, filters }) => {
   const weather = useWeather(location);
   return (
     <table className="weather-table">
@@ -56,4 +56,6 @@ export default function WeatherTable({ location, filters }) {
       </tbody>
     </table>
   );
-}
+};
+
+export default WeatherTable;

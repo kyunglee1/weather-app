@@ -6,7 +6,7 @@ import SearchFilterTable from '../SearchFilterTable/index';
 import WeatherTable from '../WeatherTable/index';
 import './index.css';
 
-export default function App() {
+const App = () => {
   const [city, setCity] = useState('');
   const [hasClickedSearch, setHasClickedSearch] = useState(false);
   const [hasClickedShowFilters, setHasClickedShowFilters] = useState(false);
@@ -16,17 +16,21 @@ export default function App() {
     humidity: false,
     visibility: false,
   });
+
   const handleInputChange = (e) => {
     const input = e.target.value;
     setCity(input);
     setHasClickedSearch(false);
   };
+
   const handleSearchClick = () => {
     setHasClickedSearch(true);
   };
+
   const handleShowFiltersClick = () => {
     setHasClickedShowFilters((prev) => !prev);
   };
+
   const handleFilterChange = (e) => {
     const { name } = e.target;
     const value = e.target.checked;
@@ -35,6 +39,7 @@ export default function App() {
       [name]: value,
     }));
   };
+
   return (
     <div id="container">
       <SearchBar
@@ -52,4 +57,6 @@ export default function App() {
       {hasClickedSearch && <WeatherTable location={city} filters={filters} />}
     </div>
   );
-}
+};
+
+export default App;

@@ -3,51 +3,51 @@
 import React from 'react';
 import './index.css';
 
-export default function SearchFilterTable({ filters, onFilterChange }) {
-  return (
-    <table className="search-filter-table">
-      <tbody>
-        <tr>
-          <td>
-            <input
-              name="visibility"
-              type="checkbox"
-              checked={filters.visibility}
-              onChange={onFilterChange}
-            />
-            Visibility
-          </td>
-          <td>
-            <input
-              name="wind"
-              type="checkbox"
-              checked={filters.wind}
-              onChange={onFilterChange}
-            />
-            Wind Speed
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input
-              name="humidity"
-              type="checkbox"
-              checked={filters.humidity}
-              onChange={onFilterChange}
-            />
-            Humidity
-          </td>
-          <td>
-            <input
-              name="feelsLike"
-              type="checkbox"
-              checked={filters.feelsLike}
-              onChange={onFilterChange}
-            />
-            Feels-Like
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  );
-}
+const SearchFilterTable = ({ filters, onFilterChange }) => (
+  <table className="search-filter-table">
+    <tbody>
+      <tr>
+        <td>
+          <input
+            name="visibility"
+            type="checkbox"
+            checked={filters.visibility}
+            onChange={onFilterChange}
+          />
+          Visibility
+        </td>
+        <td>
+          <input
+            name="wind"
+            type="checkbox"
+            checked={filters.wind}
+            onChange={onFilterChange}
+          />
+          Wind Speed
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            name="humidity"
+            type="checkbox"
+            checked={filters.humidity}
+            onChange={onFilterChange}
+          />
+          Humidity
+        </td>
+        <td>
+          <input
+            name="feelsLike"
+            type="checkbox"
+            checked={filters.feelsLike}
+            onChange={onFilterChange}
+          />
+          Feels-Like
+        </td>
+      </tr>
+    </tbody>
+  </table>
+);
+
+export default SearchFilterTable;

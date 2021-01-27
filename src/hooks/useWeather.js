@@ -1,7 +1,6 @@
-/* eslint-disable no-alert */
 import { useState, useEffect } from 'react';
 
-export default function useWeather(location) {
+const useWeather = (location) => {
   const [weather, setWeather] = useState({
     temperature: '---',
     tempMax: '--',
@@ -15,6 +14,7 @@ export default function useWeather(location) {
       visibility: '',
     },
   });
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
@@ -26,6 +26,7 @@ export default function useWeather(location) {
       const data = await res.json();
       return data;
     };
+
     fetchData()
       .then((data) => {
         const temperature = Math.round(data.main.temp);
@@ -37,6 +38,7 @@ export default function useWeather(location) {
         const { humidity } = data.main;
         const wind = Math.round(data.wind.speed);
         const { visibility } = data;
+
         setWeather({
           temperature,
           tempMax,
@@ -51,10 +53,12 @@ export default function useWeather(location) {
           },
         });
       })
-      .catch((err) => {
-        alert(err.message);
+      .catch(() => {
         setWeather((prev) => ({ ...prev, temperature: 'N/A' }));
       });
   }, [location]);
+
   return weather;
-}
+};
+
+export default useWeather;

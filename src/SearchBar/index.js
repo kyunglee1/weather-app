@@ -7,27 +7,24 @@
 import React from 'react';
 import './index.css';
 
-export default function SearchBar(props) {
-  const handleChange = (e) => {
-    props.onInputChange(e);
-  };
-  const handleSearchClick = () => {
-    props.onSearchClick();
-  };
+const SearchBar = (props) => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       props.onSearchClick();
     }
   };
+
   return (
     <div className="search-input">
       <input
         type="text"
         value={props.inputText}
-        onChange={handleChange}
+        onChange={props.onInputChange}
         onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSearchClick} />
+      <button onClick={props.onSearchClick} />
     </div>
   );
-}
+};
+
+export default SearchBar;
