@@ -2,7 +2,8 @@
   grid-area: filters;
   align-self: start;
   justify-self: start;
-  border: 1px double cadetblue;
-  border-radius: 5px;
+  border: thin double cadetblue;
+  border-radius: 5%;
   background-color: whitesmoke;
+  font-size: 1.6rem;
 }

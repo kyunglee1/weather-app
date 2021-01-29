@@ -3,10 +3,10 @@
   align-self: end;
   justify-self: start;
   width: 8%;
-  height: 60%;
+  height: 3rem;
   background: url('https://library.kissclipart.com/20190912/wlq/kissclipart-adjust-icon-configuration-icon-filter-icon-bb04dfd66683ff54.png')
     no-repeat;
   background-size: 100%;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   outline: none;
 }
