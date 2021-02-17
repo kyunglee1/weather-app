@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import { connect } from 'react-redux';
 import './index.css';
 
 const SearchFilterTable = ({ filters, onFilterChange }) => (
@@ -50,4 +51,8 @@ const SearchFilterTable = ({ filters, onFilterChange }) => (
   </table>
 );
 
-export default SearchFilterTable;
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+});
+
+export default connect(mapStateToProps)(SearchFilterTable);

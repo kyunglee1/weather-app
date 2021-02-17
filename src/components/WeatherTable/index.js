@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import { connect } from 'react-redux';
 import useWeather from '../../hooks/useWeather';
 import WeatherFieldRow from '../WeatherFieldRow/index';
 import WeatherIcon from '../WeatherIcon/index';
@@ -60,4 +61,8 @@ const WeatherTable = ({ location, filters }) => {
   );
 };
 
-export default WeatherTable;
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+});
+
+export default connect(mapStateToProps)(WeatherTable);
