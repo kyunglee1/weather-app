@@ -5,6 +5,7 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import './index.css';
 
 const SearchBar = (props) => {
@@ -27,4 +28,8 @@ const SearchBar = (props) => {
   );
 };
 
-export default SearchBar;
+const mapStateToProps = (state) => ({
+  inputText: state.location,
+});
+
+export default connect(mapStateToProps)(SearchBar);

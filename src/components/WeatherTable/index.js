@@ -62,6 +62,7 @@ const WeatherTable = ({ location, filters }) => {
 };
 
 const mapStateToProps = (state) => ({
+  location: state.location,
   filters: state.filters,
 });
 

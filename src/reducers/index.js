@@ -14,7 +14,7 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_FILTER: {
       const { name } = action.payload.filter;
-      const { value } = action.payload.filter;
+      const value = action.payload.filter.checked;
 
       return {
         ...state,
@@ -26,7 +26,10 @@ const rootReducer = (state = initialState, action) => {
     }
 
     case SET_LOCATION:
-      return state;
+      return {
+        ...state,
+        location: action.payload.location,
+      };
 
     default:
       return state;

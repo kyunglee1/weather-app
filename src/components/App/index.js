@@ -6,11 +6,12 @@ import ShowFiltersButton from '../ShowFiltersButton/index';
 import SearchBar from '../SearchBar/index';
 import SearchFilterTable from '../SearchFilterTable/index';
 import WeatherTable from '../WeatherTable/index';
+import setLocation from '../../actions/setLocation';
 import toggleFilter from '../../actions/toggleFilter';
 import './index.css';
 
 const App = (props) => {
-  const [city, setCity] = useState('');
+  // const [city, setCity] = useState('');
   const [hasClickedSearch, setHasClickedSearch] = useState(false);
   const [hasClickedShowFilters, setHasClickedShowFilters] = useState(false);
   // const [filters, setFilters] = useState({
@@ -22,7 +23,7 @@ const App = (props) => {
 
   const handleInputChange = (e) => {
     const input = e.target.value;
-    setCity(input);
+    props.setLocation(input);
     setHasClickedSearch(false);
   };
 
@@ -35,13 +36,13 @@ const App = (props) => {
   };
 
   const handleFilterChange = (e) => {
-    props.toggleFilter(e.target);
+    const filter = e.target;
+    props.toggleFilter(filter);
   };
 
   return (
     <div id="container">
       <SearchBar
-        inputText={city}
         onInputChange={handleInputChange}
         onSearchClick={handleSearchClick}
       />
@@ -49,14 +50,16 @@ const App = (props) => {
       {hasClickedShowFilters && (
         <SearchFilterTable onFilterChange={handleFilterChange} />
       )}
-      {hasClickedSearch && <WeatherTable location={city} />}
+      {hasClickedSearch && <WeatherTable />}
     </div>
   );
 };
 
 // Should checkbox be hooked to store?
+// Should city in SearchBar be hooked to store? Or, do we hook the city variable inside SearchBar to store and then use it from WeatherTable?
 
 const mapDispatchToProps = (dispatch) => ({
+  setLocation: (location) => dispatch(setLocation(location)),
   toggleFilter: (filter) => dispatch(toggleFilter(filter)),
 });
 
