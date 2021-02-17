@@ -1,25 +1,28 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import ShowFiltersButton from '../ShowFiltersButton/index';
 import SearchBar from '../SearchBar/index';
 import SearchFilterTable from '../SearchFilterTable/index';
 import WeatherTable from '../WeatherTable/index';
+import setLocation from '../../actions/setLocation';
 import './index.css';
 
-const App = () => {
-  const [city, setCity] = useState('');
+const App = (props) => {
+  // const [city, setCity] = useState('');
   const [hasClickedSearch, setHasClickedSearch] = useState(false);
   const [hasClickedShowFilters, setHasClickedShowFilters] = useState(false);
-  const [filters, setFilters] = useState({
-    feelsLike: false,
-    wind: false,
-    humidity: false,
-    visibility: false,
-  });
+  // const [filters, setFilters] = useState({
+  //   feelsLike: false,
+  //   wind: false,
+  //   humidity: false,
+  //   visibility: false,
+  // });
 
   const handleInputChange = (e) => {
     const input = e.target.value;
-    setCity(input);
+    props.setLocation(input);
     setHasClickedSearch(false);
   };
 
@@ -31,32 +34,24 @@ const App = () => {
     setHasClickedShowFilters((prev) => !prev);
   };
 
-  const handleFilterChange = (e) => {
-    const { name } = e.target;
-    const value = e.target.checked;
-    setFilters((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   return (
     <div id="container">
       <SearchBar
-        inputText={city}
         onInputChange={handleInputChange}
         onSearchClick={handleSearchClick}
       />
       <ShowFiltersButton onShowFiltersClick={handleShowFiltersClick} />
-      {hasClickedShowFilters && (
-        <SearchFilterTable
-          filters={filters}
-          onFilterChange={handleFilterChange}
-        />
-      )}
-      {hasClickedSearch && <WeatherTable location={city} filters={filters} />}
+      {hasClickedShowFilters && <SearchFilterTable />}
+      {hasClickedSearch && <WeatherTable />}
     </div>
   );
 };
 
-export default App;
+// Should checkbox be hooked to store?
+// Should city in SearchBar be hooked to store? Or, do we hook the city variable inside SearchBar to store and then use it from WeatherTable?
+
+const mapDispatchToProps = (dispatch) => ({
+  setLocation: (location) => dispatch(setLocation(location)),
+});
+
+export default connect(null, mapDispatchToProps)(App);
