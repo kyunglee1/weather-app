@@ -1,10 +1,12 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { connect } from 'react-redux';
+import toggleFilter from '../../actions/toggleFilter';
 import './index.css';
 
-const SearchFilterTable = ({ filters, onFilterChange }) => (
+const SearchFilterTable = (props) => (
   <table className="search-filter-table">
     <tbody>
       <tr>
@@ -12,8 +14,8 @@ const SearchFilterTable = ({ filters, onFilterChange }) => (
           <input
             name="visibility"
             type="checkbox"
-            checked={filters.visibility}
-            onChange={onFilterChange}
+            checked={props.filters.visibility}
+            onChange={props.toggleFilter}
           />
           Visibility
         </td>
@@ -21,8 +23,8 @@ const SearchFilterTable = ({ filters, onFilterChange }) => (
           <input
             name="wind"
             type="checkbox"
-            checked={filters.wind}
-            onChange={onFilterChange}
+            checked={props.filters.wind}
+            onChange={props.toggleFilter}
           />
           Wind Speed
         </td>
@@ -32,8 +34,8 @@ const SearchFilterTable = ({ filters, onFilterChange }) => (
           <input
             name="humidity"
             type="checkbox"
-            checked={filters.humidity}
-            onChange={onFilterChange}
+            checked={props.filters.humidity}
+            onChange={props.toggleFilter}
           />
           Humidity
         </td>
@@ -41,8 +43,8 @@ const SearchFilterTable = ({ filters, onFilterChange }) => (
           <input
             name="feelsLike"
             type="checkbox"
-            checked={filters.feelsLike}
-            onChange={onFilterChange}
+            checked={props.filters.feelsLike}
+            onChange={props.toggleFilter}
           />
           Feels-Like
         </td>
@@ -55,4 +57,8 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
 });
 
-export default connect(mapStateToProps)(SearchFilterTable);
+const mapDispatchToProps = (dispatch) => ({
+  toggleFilter: (filter) => dispatch(toggleFilter(filter)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchFilterTable);

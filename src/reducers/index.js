@@ -13,8 +13,8 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_FILTER: {
-      const { name } = action.payload.filter;
-      const value = action.payload.filter.checked;
+      const { name } = action.payload.filter.target;
+      const value = action.payload.filter.target.checked;
 
       return {
         ...state,

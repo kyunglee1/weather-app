@@ -7,7 +7,6 @@ import SearchBar from '../SearchBar/index';
 import SearchFilterTable from '../SearchFilterTable/index';
 import WeatherTable from '../WeatherTable/index';
 import setLocation from '../../actions/setLocation';
-import toggleFilter from '../../actions/toggleFilter';
 import './index.css';
 
 const App = (props) => {
@@ -35,11 +34,6 @@ const App = (props) => {
     setHasClickedShowFilters((prev) => !prev);
   };
 
-  const handleFilterChange = (e) => {
-    const filter = e.target;
-    props.toggleFilter(filter);
-  };
-
   return (
     <div id="container">
       <SearchBar
@@ -47,9 +41,7 @@ const App = (props) => {
         onSearchClick={handleSearchClick}
       />
       <ShowFiltersButton onShowFiltersClick={handleShowFiltersClick} />
-      {hasClickedShowFilters && (
-        <SearchFilterTable onFilterChange={handleFilterChange} />
-      )}
+      {hasClickedShowFilters && <SearchFilterTable />}
       {hasClickedSearch && <WeatherTable />}
     </div>
   );
@@ -60,7 +52,6 @@ const App = (props) => {
 
 const mapDispatchToProps = (dispatch) => ({
   setLocation: (location) => dispatch(setLocation(location)),
-  toggleFilter: (filter) => dispatch(toggleFilter(filter)),
 });
 
 export default connect(null, mapDispatchToProps)(App);
