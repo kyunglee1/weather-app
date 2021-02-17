@@ -1,0 +1,36 @@
+import { TOGGLE_FILTER, SET_LOCATION } from '../actions/types';
+
+const initialState = {
+  location: '',
+  filters: {
+    feelsLike: false,
+    wind: false,
+    humidity: false,
+    visibility: false,
+  },
+};
+
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case TOGGLE_FILTER: {
+      const { name } = action.payload.filter;
+      const { value } = action.payload.filter;
+
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [name]: value,
+        },
+      };
+    }
+
+    case SET_LOCATION:
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+export default rootReducer;
