@@ -15,3 +15,18 @@
     '. table . filters'
     '. . . .';
 }
+
+@media (max-width: 1040px) {
+  html {
+    font-size: 90%;
+  }
+
+  #container {
+    grid: 2fr 1fr 10fr 3fr / 3fr 5fr 5fr 3fr;
+    grid-template-areas:
+      '. . . .'
+      '. search search .'
+      '. table table .'
+      '. button filters .';
+  }
+}

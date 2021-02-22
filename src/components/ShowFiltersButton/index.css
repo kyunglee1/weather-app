@@ -10,3 +10,10 @@
   border-radius: 0.5rem;
   outline: none;
 }
+
+@media (max-width: 1040px) {
+  .show-filters-button {
+    align-self: start;
+    justify-self: end;
+  }
+}
