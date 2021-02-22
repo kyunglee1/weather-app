@@ -23,3 +23,9 @@
     no-repeat;
   background-size: 100%;
 }
+
+@media (max-width: 700px) {
+  .search-input input {
+    width: 80%;
+  }
+}
