@@ -18,7 +18,7 @@
 
 @media (max-width: 1040px) {
   html {
-    font-size: 80%;
+    font-size: 70%;
   }
 
   #container {
@@ -33,9 +33,9 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   html {
-    font-size: 70%;
+    font-size: 65%;
   }
 
   #container {
@@ -50,12 +50,12 @@
 
 @media (max-width: 400px) {
   html {
-    font-size: 60%;
+    font-size: 50%;
   }
 }
 
 @media (max-width: 300px) {
   html {
-    font-size: 50%;
+    font-size: 40%;
   }
 }
